@@ -40,8 +40,8 @@ for(my $i = $zmin; $i < $zmax; $i += $offset) {
         }
         if (!$line_found) {
 #   if the beginning of the first line and the end of the last point don't match, die due to incomplete structure
-            die "bad loop\n$!" if($current_loop[0]->{x} - $current_loop[-1]->{x} > $offset);
-            die "bad loop\n$!" if($current_loop[0]->{y} - $current_loop[-1]->{y} > $offset);
+            die "bad loop\n$!" if(abs($current_loop[0]->{x} - $current_loop[-1]->{x}) > $offset);
+            die "bad loop\n$!" if(abs($current_loop[0]->{y} - $current_loop[-1]->{y}) > $offset);
 #   if there are still unordered lines, repeat from 'take first line'
             $start_line = shift @lines;
             @current_loop = ($start_line);
